@@ -7,6 +7,13 @@ function App() {
   const handleDark = () => {
     setIsDark((prev) => !prev);
   };
+
+  const data = [
+    { name: "Total", total: 0 },
+    { name: "Active", total: 0 },
+    { name: "Completed", total: 0 },
+    { name: "Progress", total: "0%" },
+  ];
   return (
     <div
       className={`min-h-screen ${isDark ? "text-white bg-black" : "text-black bg-white"}`}
@@ -27,7 +34,17 @@ function App() {
           </div>
         </div>
         {/* dashboard */}
-        <div></div>
+        <div className="grid grid-cols-2 gap-2 mt-6">
+          {data.map((item, idx) => (
+            <div
+              key={idx}
+              className={`w-full h-12 p-1 rounded-xl ${isDark ? "bg-white text-black" : "text-white bg-black"}`}
+            >
+              <p className="font-bold text-xs">{item.name}</p>
+              <p className=" text-xs">{item.total}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
