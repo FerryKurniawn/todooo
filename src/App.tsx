@@ -1,5 +1,5 @@
 import { Sun, Moon } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 function App() {
   const [isDark, setIsDark] = useState<boolean>(
     window.matchMedia("(prefers-color-scheme: dark)").matches,
@@ -14,6 +14,21 @@ function App() {
     { name: "Completed", total: 0 },
     { name: "Progress", total: "0%" },
   ];
+
+  const time = new Date().getHours();
+  const greeting = (time: number) => {
+    if (time >= 4 && time <= 11) {
+      return "Morning";
+    } else if (time >= 12 && time <= 16) {
+      return "Afternoon";
+    } else if (time >= 17 && time <= 21) {
+      return "Evening";
+    } else {
+      return "Night";
+    }
+  };
+  const greetings = greeting(time);
+
   return (
     <div
       className={`min-h-screen ${isDark ? "text-white bg-black" : "text-black bg-white"}`}
@@ -24,7 +39,7 @@ function App() {
           <div>
             <h1 className="font-bold text-lg">Tasky</h1>
             <p className="font-extralight text-sm">
-              Good evening, ready to focus?
+              Good {greetings}, ready to focus?
             </p>
           </div>
           <div>
