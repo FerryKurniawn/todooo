@@ -38,13 +38,14 @@ function App() {
           {data.map((item, idx) => (
             <div
               key={idx}
-              className={`w-full h-12 p-1 rounded-xl ${isDark ? "bg-white text-black" : "text-white bg-black"}`}
+              className={`w-full h-12 p-1 rounded-xl shadow-md ${isDark ? "bg-[#0d0d0d]" : "bg-[#fcfcfc]"}`}
             >
               <p className="font-bold text-xs">{item.name}</p>
               <p className=" text-xs">{item.total}</p>
             </div>
           ))}
         </div>
+        {/* task */}
       </div>
     </div>
   );
